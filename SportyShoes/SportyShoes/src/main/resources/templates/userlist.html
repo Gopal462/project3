@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org/">
+<head>
+<meta charset="ISO-8859-1">
+<title>List Of User</title>
+</head>
+<body>
+<h3>List Of User</h3>
+<form th:action="@{/searchuser}">
+    Filter: <input type="text" name="keyword" id="keyword" size="50" th:value="${keyword}" required />
+    &nbsp;
+    <input type="submit" value="Search" />
+    &nbsp;
+    <input type=reset />
+</form>
+<table>
+   <tr>
+   <th>ID&nbsp;&nbsp;</th>
+   <th>Usename &nbsp;&nbsp;</th>
+   <th>Name&nbsp;&nbsp;</th>
+   <th>Contact No.&nbsp;&nbsp;</th>
+
+   </tr>
+   
+   <tr th:each="ob:${list}">
+   <td th:text=${ob.id}></td>
+   <td th:text=${ob.username}></td>
+   <td th:text=${ob.fname}+${ob.lname}></td>
+ 
+   <td th:text=${ob.number}></td>
+ 
+   
+   </tr>
+   </table>
+<a th:href="@{dashboard}">Back To DashBoard</a><br><br>
+<a th:href="@{login}">Back To Login Page</a><br><br>
+</body>
+</html>
